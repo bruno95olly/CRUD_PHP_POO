@@ -59,9 +59,9 @@
             $sql = "select * from tbl_contatos";
             $result = $this->connection->query($sql);
             $i = 0;
+            $contatos[] = new ContactModel();
 
             while($rsContato = $result->fetch(PDO::FETCH_ASSOC)){
-                $contatos[] = new ContactModel();
 
                 $contatos[$i]->setId($rsContato['id']);
                 $contatos[$i]->setNome($rsContato['nome_completo']);

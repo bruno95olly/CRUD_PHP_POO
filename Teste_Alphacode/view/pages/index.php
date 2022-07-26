@@ -108,16 +108,17 @@
                         $contacts = $dataContacts->listContact();
                         $i = 0;
                         while($i < count($contacts)){
-                        
-                            $original_date = $contacts[$i]->getNascimento();
-                            $timestamp = strtotime($original_date);
-                            
-                            // Creating new date format from that timestamp
-                            $new_date = date("d/m/Y", $timestamp);
+                            if($contacts[$i]->getNascimento() != null){
+                                $original_date = $contacts[$i]->getNascimento();
+                                $timestamp = strtotime($original_date);
+                                $new_date = date("d/m/Y", $timestamp);
+                            }else{
+                                $new_date = "";
+                            }
                     ?>
                     <tr>
                         <td><?=$contacts[$i]->getNome();?></td>
-                        <td><?=$new_date?></td>
+                        <td><?=$new_date;?></td>
                         <td><?=$contacts[$i]->getEmail();?></td>
                         <td><?=$contacts[$i]->getCelular();?></td>
                         <td>
