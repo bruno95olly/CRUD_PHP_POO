@@ -1,0 +1,57 @@
+.input-outlined{
+    height: 40px;
+    width: 100%;
+    position: relative;
+}
+.input-outlined input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 17px;
+    border-bottom: 2px solid silver;
+    outline: none;
+}
+.input-outlined input:focus ~ label,
+.input-outlined input:not(.no-required):valid ~ label,
+.input-outlined input.no-required:not(:placeholder-shown) ~ label{
+    transform: translateY(-32px);
+    color: var(--corPrimaria);
+}
+.input-outlined input.invalid:not(:placeholder-shown) ~ label{
+        font-size: 14px;
+        transform: translateY(-32px);
+        color: rgb(255 129 105);
+}
+small{
+    color: rgb(255 129 105);
+}
+.input-outlined label{
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    color: grey;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.input-outlined .underline{
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+}
+
+.input-outlined .underline:before{
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-color: var(--corPrimaria);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+.input-outlined input:focus ~ .underline:before,
+.input-outlined input.no-required:not(:placeholder-shown) ~ .underline:before,
+.input-outlined input:not(.no-required):valid ~ .underline:before{
+    transform: scaleX(1);
+}
+
